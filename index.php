@@ -25,10 +25,20 @@
             Price: From: <input type="text" name="priceFrom" size="7"/> 
              To: <input type="text" name="priceTo" size="7"/>
             <br>
-            Order By:
-            Price <input type="radio" name="orderBy" value="productPrice">
-            Name <input type="radio" name="orderBy" value="productName">
+            
+            Order Price By <br>
+              <input type="radio" name="orderBy" value="low-high"
+                <?php if ($_GET['orderBy'] == "ASC") {
+                //echo "checked";
+                } ?>
+                /> ASC <br>
+              <input type="radio" name="orderBy" value="high-low"
+                <?php if ($_GET['orderBy'] == "DECS") {
+                //echo "checked";
+                } ?>
+                /> DECS <br>
             <br>
+            
             <input type="submit" name="submit" value="Search!"/>
         </form>
         <br>
