@@ -65,10 +65,10 @@
         //print_r($records);
         
         foreach ($records as $record) {
-            echo "<a href='purchaseHistory.php?productId=".$record['productId']."'>";
+            echo "<h2><a href='purchaseHistory.php?productId=".$record['productId']."'>";
             echo $record['productName'];
             echo "</a> ";
-            echo $record['productDescription'] . " $" .  $record['price'] .   "<br>";   
+            echo "Price: $" .$record['price']. "</h2><br>";   
             
         }
     }
