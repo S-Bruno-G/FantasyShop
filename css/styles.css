@@ -1,0 +1,67 @@
+    body {
+        background-color: #ffc2b3;
+        color: black;
+        text-align: center;
+        
+    }
+    
+    input, select {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #ccddff;
+    }
+    
+    input[type=submit] {
+        width: 20%;
+        background-color: #00cc00;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    
+    label {
+        font-weight: bold;
+    }
+    
+    
+    #main {
+        background-color: #ffff00;
+        border-radius: 20px;
+        width: 50%;
+    }
+    #title {
+        background-color: #ff6666;
+        border-radius: 20px;
+        width: 50%;
+        height: 50%;
+    }
+    
+    #mainR {
+        background-color: #ff9933;
+        border-radius: 20px;
+        width: 50%;
+    }
+    #titleR {
+        background-color: #00cc00;
+        border-radius: 20px;
+        width: 50%;
+        height: 50%;
+    }
+    
+    footer {
+        font-size: 0.9em;
+    }
+    
+    #points {
+        font-size: 3em;
+    }
