@@ -1,5 +1,6 @@
 <?php
     include 'functions.php';
+    // filters and displays the products
 
 ?>
 
@@ -15,6 +16,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel='stylesheet' href='css/styles.css' type='text/css' />
     </head>
+    
     <body>
         <!-- Bootstrap Navagation Bar -->
             <nav class='navbar navbar-default - navbar-fixed-top'>
@@ -59,7 +61,7 @@
                 /> high-low <br>
             <br>
             
-            <input type="submit" name="submit" value="Search!"/>
+            <input id='search' type="submit" name="submit" value="Search!"/>
         </form>
         <br>
         <hr>
@@ -72,7 +74,7 @@
         ?>
         
     </body>
-    <hr width='75%' size='10px' color='#a6a6a6'>
+    <hr id='bottom' width='100%' size='10px' color='#a6a6a6'>
     <footer>
         CST336 Internet Programming Team Project: Fantasy Shop. 2018
     </footer>

@@ -16,7 +16,6 @@
         }
     }
     
-    // filters and displays the products
     function filterProducts() {
         global $dbConn;
         
@@ -63,15 +62,78 @@
         $stmt->execute($namedParameters);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);  
         //print_r($records);
-        
+        //echo "<table>";
         foreach ($records as $record) {
+            //echo "<tr>";
+            echo "<hr width='75%'>";
             echo "<h2><a href='purchaseHistory.php?productId=".$record['productId']."'>";
+            echo "<img src='" . $record['productImage'] . "'  width='4%'>";
             echo $record['productName'];
-            echo "</a> ";
-            echo "Price: $" .$record['price']. "</h2><br>";   
-            
+            echo "</a>";
+            echo "Price: $" .$record['price']. "</h2>";
+            //echo "</tr>";
         }
+        //echo "</table>";
     }
     
+    function displayProductInfo(){
+        global $dbConn;
+        
+        $productId = $_GET['productId'];
+        $sql = "SELECT * 
+                FROM fs_purchase 
+                NATURAL RIGHT JOIN fs_product 
+                WHERE productId = $productId";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC); //fetchAll returns an Array of Arrays
+        
+        $amount = $records[0]['quantity'];
+        $price = $records[0]['unitPrice'];
+        $date = $records[0]['purchaseDate'];
+        
+        echo "<img src='" . $records[0]['productImage'] . "'  width='30%'>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        if (empty($records[0]['purchaseId'])) {
+            echo "<h3> Product hasn't been purchased yet </h3>";
+            $amount = "N/A";
+            $price = 0;
+            $date = "N/A";
+        }
+        
+        echo "<center>";
+        echo "<table id='productHistory'>";
+        
+        //echo "<th>Description-</th><th>Quantity-</th><th>Unit Price-</th><th>Purchase Date</th>";
+        foreach ($records as $record) {
+            echo "<tr>";
+            echo "<th>Product Name:</th>";
+            echo "<td>".$record[productName]."</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<th>Description:</th>";
+            echo "<td>".$record[productDescription]."</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<th>Purchase Qty:</th>";
+            echo "<td>".$amount."</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<th>Unit Price:</th>";
+            echo "<td>$".$price."</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<th>Purchase Date:</th>";
+            echo "<td>".$date."</td>";
+            echo "</tr>";  
+        }
+        echo "</table>";
+        echo "</center>";
+        
+        //print_r($records);
+        
+    }
     
 ?>

@@ -14,7 +14,7 @@
         background-color: #ccddff;
     }
     
-    input[type=submit] {
+    #search[type=submit] {
         width: 20%;
         background-color: #FF8000;
         color: black;
@@ -25,8 +25,23 @@
         cursor: pointer;
     }
     
-    input[type=submit]:hover {
+    #search[type=submit]:hover {
         background-color: #ff9933;
+    }
+    
+    #back[type=submit] {
+        width: 20%;
+        background-color: #ff471a;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    #back[type=submit]:hover {
+        background-color: #b32400;
     }
     
     label {
@@ -65,3 +80,33 @@
     #points {
         font-size: 3em;
     }
+    
+    #productHistory {
+        width: 700px;
+        /*border: solid black 5px;*/
+    }
+    
+    /*tr {*/
+    /*    height: 50px;*/
+    /*    border: solid #80bfff 5px;*/
+    /*    background-color: #ff9933;*/
+    /*}*/
+    #productHistory {
+        width: 700px;
+        /*border: solid black 5px;*/
+    }
+    
+    tr {
+        height: 50px;
+        border: solid #80bfff 5px;
+        background-color: #ff9933;
+    }
+    
+    th {
+        width: 150px;
+    }
+    
+    #bottom {
+        height: 10px;
+    }
+    
