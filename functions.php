@@ -62,18 +62,37 @@
         $stmt->execute($namedParameters);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);  
         //print_r($records);
-        //echo "<table>";
+        
+        echo "<table class='table'>";
         foreach ($records as $record) {
-            //echo "<tr>";
-            echo "<hr width='75%'>";
-            echo "<h2><a href='purchaseHistory.php?productId=".$record['productId']."'>";
-            echo "<img src='" . $record['productImage'] . "'  width='4%'>";
+            
+            //echo "<hr width='75%'>";
+            echo "<tr>";
+            echo "<td><img src='" . $record['productImage'] . "'  width='100px'></td>";
+            echo "<td><h2><a href='purchaseHistory.php?productId=".$record['productId']."'>";
             echo $record['productName'];
-            echo "</a>";
-            echo "Price: $" .$record['price']. "</h2>";
-            //echo "</tr>";
+            echo "</a><h2></td>";
+            echo "<td><h2>Price: $" .$record['price']. "</h2></td>";
+            
+            echo "<td><form method ='post'>";
+            echo "<input type='hidden' name = itemName value='". $record['productName'] ."'>";
+            echo "<input type='hidden' name = itemPrice value='". $record['price'] ."'>";
+            echo "<input type='hidden' name = itemImage value='". $record['productImage'] ."'>";
+            echo "<input type='hidden' name = itemId value='". $record['productId'] ."'>";
+            if ($_POST['itemId'] == $record['productId']) {
+            
+            echo "<button class='btn btn-success'>Added</button>";
+            } else {
+            echo "<button class='btn btn-warning'>Add</button>";
+            }
+            echo "</form></td>";
+            
+            
+            echo "</tr>";
+            
         }
-        //echo "</table>";
+        
+        echo "</table>";
     }
     
     function displayProductInfo(){
@@ -136,4 +155,54 @@
         
     }
     
+    
+    function displayCart() {
+        if (isset($_SESSION['cart'])) {
+            
+            echo "<table class='table'>";
+            foreach ($_SESSION['cart'] as $item) {
+                $itemName = $item['name'];
+                $itemPrice = $item['price'];
+                $itemImage = $item['image'];
+                $itemId = $item['id'];
+                $itemQuant = $item['quantity'];
+                echo "<tr>";
+                
+                echo "<td><img src='$itemImage' width='100px'></td>";
+                echo "<td><h4>$itemName</h4></td>";
+                echo "<td><h4>$itemPrice</h4></td>";
+                
+                echo "<form method= 'post'>";
+                echo "<input type='hidden' name='itemId' value ='$itemId'>";
+                echo "<td><input type='number' name='update' min='1' placeHolder = '$itemQuant'></td>";
+                echo "<td><button class='btn btn-danger'>Update</button></td>";
+                echo "</form>";
+                
+                echo "<form method= 'post'>";
+                echo "<input type='hidden' name='removeId' value ='$itemId'>";
+                echo "<td><button class='btn btn-danger'>Remove</button></td>";
+                echo "</form>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
+    }
+    
+    function displayCartCount() {
+        
+        //number of items, not including duplicates
+        echo count($_SESSION['cart']);
+        
+        
+        //number of items, including duplicates
+        $total = 0;
+        
+        if (isset($_SESSION['cart'])){
+        foreach ($_SESSION['cart'] as $item)
+        {
+            $total += $item['quantity'];
+        }}
+        
+        echo " (". $total . ")";
+    }
 ?>

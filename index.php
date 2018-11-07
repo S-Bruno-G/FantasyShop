@@ -1,6 +1,35 @@
 <?php
+    session_start();
     include 'functions.php';
     // filters and displays the products
+    
+    
+        
+    if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array();
+    }
+    
+    if (isset($_POST['itemName'])) {
+        $newItem = array();
+        $newItem['name'] = $_POST['itemName'];
+        $newItem['id'] = $_POST['itemId'];
+        $newItem['price'] = $_POST['itemPrice'];
+        $newItem['image'] = $_POST['itemImage'];
+        
+        
+        foreach ($_SESSION['cart'] as &$item) {
+            if ($newItem['id'] == $item['id'])
+            {
+            $item['quantity'] += 1;
+            $found = true;
+        }
+        }
+        if ($found != true) {
+            $newItem['quantity'] = 1;
+            array_push($_SESSION['cart'], $newItem);
+        }
+    }
+    
 
 ?>
 
@@ -28,24 +57,25 @@
                         <li><a href='index.php'>Home</a></li>
                         <li><a href='scart.php'>
                         <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'>
-                        </span> Cart: </a></li>
+                        </span> Cart: <?php displayCartCount(); ?></a></li>
                     </ul>
                 </div>
             </nav>
             <br /> <br /> <br />
             
             <img src="https://fontmeme.com/permalink/181105/4a00f79cfe7a04a29bbd1289d37dd1ca.png" alt="dragon-ball-z-font" border="0">
+            <h2>Search</h2>
         <form>
-            Product: <input type="text" name="productName" placeholder="Product keyword" /> <br />
+            Product: <input type="text" name="productName" placeholder="Product keyword" class ="searchInputs"/> <br />
             
             Category: 
-            <select name="category">
+            <select name="category" class ="searchInputs">
                <option value=""> -Select one- </option>  
                <?=displayCategories()?>
             </select>
             <br>
-            Price: From: <input type="text" name="priceFrom" size="7"/> 
-             To: <input type="text" name="priceTo" size="7"/>
+            Price: From: <input type="number" name="priceFrom" size="7" class ="searchInputs"/> 
+             To: <input type="number" name="priceTo" size="7" class ="searchInputs"/>
             <br>
             
             Order Price By <br>

@@ -7,11 +7,27 @@
     
     input, select {
         padding: 12px 20px;
-        margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
         background-color: #ccddff;
+    }
+    
+    .searchInputs {
+
+        margin: 8px 0;
+    }
+    
+    h4{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .form-control{
+        
+        margin-top: 0;
+        margin-bottom: 0;
+        
     }
     
     #search[type=submit] {
@@ -97,9 +113,10 @@
     }
     
     tr {
-        height: 50px;
-        border: solid #80bfff 5px;
-        background-color: #ff9933;
+        /*height: 50px;
+        
+        border: 1px solid white;
+        background-color: #ff9933;*/
     }
     
     th {
