@@ -90,7 +90,10 @@
                 } ?>
                 /> high-low <br>
             <br>
-            
+            Order Name By<br>
+                <input type = "radio" name = "orderBy" value ="az">A-Z
+                <input type = "radio" name = "orderBy" value ="za">Z-A
+               <br />
             <input id='search' type="submit" name="submit" value="Search!"/>
         </form>
         <br>
