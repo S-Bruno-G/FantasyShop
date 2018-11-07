@@ -108,7 +108,7 @@
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC); //fetchAll returns an Array of Arrays
         
         $amount = $records[0]['quantity'];
-        $price = $records[0]['unitPrice'];
+        $price = $records[0]['price'];
         $date = $records[0]['purchaseDate'];
         
         echo "<img src='" . $records[0]['productImage'] . "'  width='30%'>";
@@ -118,7 +118,7 @@
         if (empty($records[0]['purchaseId'])) {
             echo "<h3> Product hasn't been purchased yet </h3>";
             $amount = "N/A";
-            $price = 0;
+            //$price = 0;
             $date = "N/A";
         }
         
