@@ -1,6 +1,6 @@
 <?php
 include 'functions.php';
-
+session_start();
 
 ?>
 
@@ -28,7 +28,7 @@ include 'functions.php';
                         <li><a href='index.php'>Home</a></li>
                         <li><a href='scart.php'>
                         <span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'>
-                        </span> Cart:</a></li>
+                        </span> Cart: <?php displayCartCount(); ?></a></li>
                         
                     </ul>
                 </div>
